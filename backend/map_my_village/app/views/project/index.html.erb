@@ -13,12 +13,13 @@
  -->
 <section id="placeholder">
         <div id="data" class="span3" style="height: 100%;">
+        <img src="/assets/logo2.png" width="250px" />
+        <h3>Projects</h3>
         <% @projects.each do |f| %>
-        <a href="/project/<%= f.id %>"><%= f.name %> </a> <br /><br />
+        <a href="/project?id=<%= f.id %>"><%= f.name %> </a> <br /><br />
         <% end %>
-            <h5>Location: </h5>
-            <h5 id="area">Area: </h5>
         </div>
         <div id="map" class="span9" style="height: 100%;width: 78%;">
+        <img src="/assets/side.jpg" width="850px;" />
         </div>
     </section>

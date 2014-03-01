@@ -1,8 +1,9 @@
 MapMyVillage::Application.routes.draw do
-  get "location/create"
+  post "/location/create"
   get "/" => "project#index"
   post "/project/create"
-  get "/project/:id" => "project#show"
+  get "/project" => "project#show"
+  # get "/" =
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
