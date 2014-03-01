@@ -1,33 +1,16 @@
-﻿<!DOCTYPE html>
-
-<html>
-<head>
-    
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+﻿    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
     </script>
-    <script src="jquery-1.10.2.min.js"></script>
-    <style type="text/css">
-        .body {
-            background: -webkit-linear-gradient(#000, #FFF); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(#000, #FFF); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(#000, #FFF); /* For Firefox 3.6 to 15 */
-            background: linear-gradient(#FFF, #000); /* Standard syntax */
-            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#ffffff);
-            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF, endColorstr=#000)";*/
-        }
-    </style>
-    <title>GoogleMaps</title>
-    <script type="text/javascript">
+   <script type="text/javascript">
         //fake database info
         var dbMapPoints = [
-        { Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng: 78.678345 },
-        { Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng: 77.345670 },
-        { Pk_Id: 3, Fk_Id: 1, lat: 18.77777, lng: 79.777777 },
-        { Pk_Id: 4, Fk_Id: 1, lat: 19.76666, lng: 76.890006 },
-        { Pk_Id: 5, Fk_Id: 2, lat: 18.23000, lng: 77.458345 },
-        { Pk_Id: 6, Fk_Id: 2, lat: 19.35678, lng: 79.968570 },
-        { Pk_Id: 7, Fk_Id: 2, lat: 17.77777, lng: 78.453377 }
+        {Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng:78.678345},
+        {Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng:77.345670},
+        {Pk_Id: 3, Fk_Id: 1, lat: 18.77777, lng:79.777777},
+        {Pk_Id: 4, Fk_Id: 1, lat: 19.76666, lng:76.890006},
+        {Pk_Id: 5, Fk_Id: 2, lat: 18.23000, lng:77.458345},
+        {Pk_Id: 6, Fk_Id: 2, lat: 19.35678, lng:79.968570},
+        {Pk_Id: 7, Fk_Id: 2, lat: 17.77777, lng:78.453377}
         ];
         var map = null;
         var mapDefaults = {
@@ -37,7 +20,7 @@
         };
         // documentReady
         $(function () {
-            var mapPosition = new google.maps.LatLng(18.23000, 77.458345);
+            var mapPosition = new google.maps.LatLng(19.76666, 76.890006);
             mapDefaults.center = mapPosition;
             map = new google.maps.Map(document.getElementById("map"), mapDefaults);
 
@@ -63,23 +46,18 @@
                 });
                 mapPoly.setMap(map);
                 var z = google.maps.geometry.spherical.computeArea(mapPoly.getPath().getArray());
-                document.getElementById("area").innerHTML = "Area = " + z;
+                document.getElementById("area").innerHTML = "Area = "+z;
                 // alert(z);
                 // var area = google.maps.geometry.spherical.computeArea(mapPoly.getPath());
                 // console.log(area);
             });
         }
     </script>
-</head>
-<body style="background-color:black; margin:0px; padding:0px;">
-        <div class="body" style="min-height: 10em; margin:0px; padding:0px;">
-           <h1 style="font-family:'Buxton Sketch'; font-size:60px;  margin:0px; padding:0px; margin-left:20px; padding-top:20px;">Map My Village</h1>
-        </div>
-        <div id="data" class="span3" style="height: 32em; width:20%; float:left; color:#eae7e7; ">
+    <section id="placeholder">
+        <div id="data" class="span3" style="height: 100%;">
             <h5>Location: </h5>
             <h5 id="area">Area: </h5>
         </div>
-        <div id="map" class="span9"  style="min-height:32em;width:78%; float:right;">
+        <div id="map" class="span9" style="height: 40em;width: 78%;">
         </div>
-</body>
-</html>
+    </section>

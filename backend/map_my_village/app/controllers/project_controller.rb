@@ -11,7 +11,7 @@ class ProjectController < ApplicationController
 
   def create
   	@project = Project.create(name: params[:name])
-  	render json: {id: @project.id} 
+  	render :text => @project.id
   end
 
 end
