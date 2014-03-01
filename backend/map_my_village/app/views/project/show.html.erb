@@ -1,2 +1,85 @@
-<h1>Project#show</h1>
-<p>Find me in app/views/project/show.html.erb</p>
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
+    </script>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style type="text/css">
+        .body {
+            background: -webkit-linear-gradient(#000, #FFF); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#000, #FFF); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(#000, #FFF); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#FFF, #000); /* Standard syntax */
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000, endColorstr=#ffffff);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF, endColorstr=#000)";*/
+        }
+    </style>
+    <title>GoogleMaps</title>
+    <script type="text/javascript">
+        //fake database info
+        var dbMapPoints = [
+        { Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng: 78.678345 },
+        { Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng: 77.345670 },
+        { Pk_Id: 3, Fk_Id: 1, lat: 18.77777, lng: 79.777777 },
+        { Pk_Id: 4, Fk_Id: 1, lat: 19.76666, lng: 76.890006 },
+        { Pk_Id: 5, Fk_Id: 2, lat: 18.23000, lng: 77.458345 },
+        { Pk_Id: 6, Fk_Id: 2, lat: 19.35678, lng: 79.968570 },
+        { Pk_Id: 7, Fk_Id: 2, lat: 17.77777, lng: 78.453377 }
+        ];
+        var map = null;
+        var mapDefaults = {
+            zoom: 8,
+            center: null,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        // documentReady
+        $(function () {
+            var mapPosition = new google.maps.LatLng(18.23000, 77.458345);
+            mapDefaults.center = mapPosition;
+            map = new google.maps.Map(document.getElementById("map"), mapDefaults);
+
+            //write polygon in map
+            // loadWithFk(1);
+            loadWithFk(2);
+        });
+
+        function loadWithFk(fkId) {
+            //grep should be replaced with tha call to your backend for getting data for fk_id
+            var latlng = [];
+            $.when($.each($.grep(dbMapPoints, function (n, i) { return (n.Fk_Id === fkId); }), function () {
+                latlng.push(new google.maps.LatLng(this.lat, this.lng));
+            })).done(function () {
+
+                mapPoly = new google.maps.Polygon({
+                    paths: latlng,
+                    strokeColor: "#FF8800",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 3,
+                    fillColor: "#FF8800",
+                    fillOpacity: 0.35
+                });
+                mapPoly.setMap(map);
+                var z = google.maps.geometry.spherical.computeArea(mapPoly.getPath().getArray());
+                document.getElementById("area").innerHTML = "Area = " + z;
+                // alert(z);
+                // var area = google.maps.geometry.spherical.computeArea(mapPoly.getPath());
+                // console.log(area);
+            });
+        }
+    </script>
+</head>
+<body style="background-color:black; margin:0px; padding:0px;">
+        <div class="body" style="min-height: 10em; margin:0px; padding:0px;">
+           <h1 style="font-family:'Buxton Sketch'; font-size:60px;  margin:0px; padding:0px; margin-left:20px; padding-top:20px;">Map My Village</h1>
+        </div>
+        <div id="data" class="span3" style="height: 32em; width:20%; float:left; color:#eae7e7; ">
+            <h5>Location: </h5>
+            <h5 id="area">Area: </h5>
+        </div>
+        <div id="map" class="span9"  style="min-height:32em;width:78%; float:right;">
+        </div>
+</body>
+</html>
