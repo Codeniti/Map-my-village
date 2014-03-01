@@ -11,6 +11,7 @@ class ProjectController < ApplicationController
 
   def create
   	@project = Project.create(name: params[:name])
+    @location = @project.locations
   	render :text => @project.id
   end
 

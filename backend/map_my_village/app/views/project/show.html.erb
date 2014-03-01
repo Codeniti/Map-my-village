@@ -4,13 +4,16 @@
    <script type="text/javascript">
         //fake database info
         var dbMapPoints = [
-        {Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng:78.678345},
-        {Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng:77.345670},
-        {Pk_Id: 3, Fk_Id: 1, lat: 18.77777, lng:79.777777},
-        {Pk_Id: 4, Fk_Id: 1, lat: 19.76666, lng:76.890006},
-        {Pk_Id: 5, Fk_Id: 2, lat: 18.23000, lng:77.458345},
-        {Pk_Id: 6, Fk_Id: 2, lat: 19.35678, lng:79.968570},
-        {Pk_Id: 7, Fk_Id: 2, lat: 17.77777, lng:78.453377}
+        <% @location.eack do |f| %>
+        {Pk_Id: 1, Fk_Id: 1, lat: <%= f.latitude %> , lng: <%= f.longitude %>  }
+        <% end %>
+        // {Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng:78.678345},
+        // {Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng:77.345670},
+        // {Pk_Id: 3, Fk_Id: 1, lat: 18.77777, lng:79.777777},
+        // {Pk_Id: 4, Fk_Id: 1, lat: 19.76666, lng:76.890006},
+        // {Pk_Id: 5, Fk_Id: 2, lat: 18.23000, lng:77.458345},
+        // {Pk_Id: 6, Fk_Id: 2, lat: 19.35678, lng:79.968570},
+        // {Pk_Id: 7, Fk_Id: 2, lat: 17.77777, lng:78.453377}
         ];
         var map = null;
         var mapDefaults = {
@@ -25,8 +28,8 @@
             map = new google.maps.Map(document.getElementById("map"), mapDefaults);
 
             //write polygon in map
-            // loadWithFk(1);
-            loadWithFk(2);
+            loadWithFk(1);
+            // loadWithFk(2);
         });
 
         function loadWithFk(fkId) {
