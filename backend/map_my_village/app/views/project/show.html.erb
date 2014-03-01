@@ -4,8 +4,8 @@
    <script type="text/javascript">
         //fake database info
         var dbMapPoints = [
-        <% @location.eack do |f| %>
-        {Pk_Id: 1, Fk_Id: 1, lat: <%= f.latitude %> , lng: <%= f.longitude %>  }
+        <% @lats.each do |f| %>
+        {Pk_Id: 1, Fk_Id: 1, lat: <%= f.latitude %> , lng: <%= f.longitude %>  },
         <% end %>
         // {Pk_Id: 1, Fk_Id: 1, lat: 19.23458, lng:78.678345},
         // {Pk_Id: 2, Fk_Id: 1, lat: 17.35678, lng:77.345670},
@@ -58,7 +58,7 @@
     </script>
     <section id="placeholder">
         <div id="data" class="span3" style="height: 100%;">
-            <h5>Location: </h5>
+            <h5>Project: <%= @project.name %> </h5>
             <h5 id="area">Area: </h5>
         </div>
         <div id="map" class="span9" style="height: 40em;width: 78%;">
