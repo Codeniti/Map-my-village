@@ -1,7 +1,6 @@
-﻿<form id="form1" runat="server">
-    <div class="body" style="min-height: 10em; background-image:final_logo_1.png;">
+﻿    <!-- <div class="body" style="min-height: 10em; background-image:final_logo_1.png;"> -->
         <!-- <h1 style="font-family:'Buxton Sketch'; font-size:60px;  margin:0px; padding:0px; margin-left:20px; padding-top:20px;">Map My Village</h1> -->
-        <img src="/assets/logo2.png" width="250px" />
+<!--         <img src="/assets/logo2.png" width="250px" />
     </div>
     <div>
         <h2>Projects</h2>
@@ -11,4 +10,15 @@
         <% end %>
     </div>
     </div>
-</form>
+ -->
+<section id="placeholder">
+        <div id="data" class="span3" style="height: 100%;">
+        <% @projects.each do |f| %>
+        <a href="/project/<%= f.id %>"><%= f.name %> </a> <br /><br />
+        <% end %>
+            <h5>Location: </h5>
+            <h5 id="area">Area: </h5>
+        </div>
+        <div id="map" class="span9" style="height: 100%;width: 78%;">
+        </div>
+    </section>
