@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity" >
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+            
+         	<TextView
+		        android:id="@+id/textview1"
+		        android:layout_width="100dp"
+		        android:layout_height="wrap_content"
+		        android:text="@string/hello_world" />
+
+            <Button
+                android:id="@+id/Start_tracking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/start_tracking" />
+            
+        </LinearLayout>
+        
+</RelativeLayout>
