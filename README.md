@@ -12,11 +12,12 @@ For Windows:
 
 Execute the code: 
 
-```cd backend/map_my_village/
+'''
+   cd backend/map_my_village/
    bundle install
    bundle exec rake db:migrate
    bundle exec rails s
-```
+'''
 
 That should start the server in port 3000 of localhost. 
 
