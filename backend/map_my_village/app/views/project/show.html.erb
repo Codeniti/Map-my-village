@@ -23,7 +23,7 @@
         };
         // documentReady
         $(function () {
-            var mapPosition = new google.maps.LatLng(19.76666, 76.890006);
+            var mapPosition = new google.maps.LatLng(<%= @lats[1].latitude %>,<%= @lats[1].longitude %>);
             mapDefaults.center = mapPosition;
             map = new google.maps.Map(document.getElementById("map"), mapDefaults);
 
@@ -59,7 +59,7 @@
     <section id="placeholder">
         <div id="data" class="span3" style="height: 100%;">
             <h5>Project: <%= @project.name %> </h5>
-            <h5 id="area">Area: </h5>
+            <h5 id="area">Area(square meters): </h5>
         </div>
         <div id="map" class="span9" style="height: 40em;width: 78%;">
         </div>
