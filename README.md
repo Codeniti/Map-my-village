@@ -4,7 +4,7 @@ Map-my-village
 ## Installing Server 
 
 For Linux and Mac:
-[Install rails)](http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/)
+[Install rails](http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/)
 For Windows: 
 [Install rails](http://railsinstaller.org/en)
 
